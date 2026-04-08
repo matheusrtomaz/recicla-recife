@@ -28,7 +28,7 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <header className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-green text-white">
+      <header className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 bg-gradient-green text-white">
         {/* Decorative background shapes */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
            <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -36,33 +36,31 @@ function App() {
            </svg>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:pr-8">
-              <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6">
-                O destino certo<br />para um Recife<br />mais sustentável.
-              </h1>
-              <p className="text-xl lg:text-2xl font-light mb-10 text-mint/90 max-w-2xl">
-                Encontre o ponto de coleta seletiva mais próximo de você e ajude a transformar o futuro da nossa cidade.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={scrollToMap}
-                  className="glow-green bg-white text-forest px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-offwhite transform hover:scale-105 transition-all"
-                >
-                  <MapPin className="h-5 w-5" />
-                  Encontrar Pontos
-                </button>
-              </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between">
+          <div className="lg:w-[60%] z-10 relative">
+            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 mt-10 lg:mt-0">
+              O destino certo<br />para um Recife<br />mais sustentável.
+            </h1>
+            <p className="text-xl lg:text-2xl font-light mb-10 text-mint/90 max-w-2xl">
+              Encontre o ponto de coleta seletiva mais próximo de você e ajude a transformar o futuro da nossa cidade.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 relative z-20">
+              <button 
+                onClick={scrollToMap}
+                className="glow-green bg-white text-forest px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-offwhite transform hover:scale-105 transition-all"
+              >
+                <MapPin className="h-5 w-5" />
+                Encontrar Pontos
+              </button>
             </div>
-            
-            <div className="hidden lg:flex justify-center relative">
-              <img 
-                src="/mockup.png" 
-                alt="Aplicativo Recicla Recife" 
-                className="relative z-10 w-full max-w-[600px] drop-shadow-2xl animate-float transition-transform hover:scale-105 duration-500"
-              />
-            </div>
+          </div>
+          
+          <div className="hidden lg:flex justify-center lg:w-[40%] relative pointer-events-none">
+            <img 
+              src="/mockup.png" 
+              alt="Aplicativo Recicla Recife" 
+              className="relative z-0 w-[480px] max-w-none drop-shadow-2xl animate-float"
+            />
           </div>
         </div>
       </header>
