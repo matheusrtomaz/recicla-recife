@@ -103,7 +103,7 @@ function App() {
                 </a>
               </div>
               <p className="text-xs text-white/40">
-                Fonte de dados: <a href="http://dados.recife.pe.gov.br/" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors underline decoration-white/20">Portal de Dados Abertos da Cidade do Recife</a>
+                Fonte de dados: <a href="https://dados.recife.pe.gov.br/dataset/pontos-de-coleta-seletiva" target="_blank" rel="noopener noreferrer" className="hover:text-mint transition-colors underline decoration-white/20">Portal de Dados Abertos da Cidade do Recife</a>
               </p>
             </div>
           </div>

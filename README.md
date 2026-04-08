@@ -73,7 +73,7 @@ Este projeto foi desenvolvido como parte integrante das atividades de extensão 
 
 ## 🔗 Fonte de Dados
 
-Utilizamos o **Portal de Dados Abertos da Cidade do Recife**, especificamente o dataset de Pontos de Coleta Seletiva, garantindo que as informações apresentadas sejam oficiais e atualizadas. 🏛️
+Utilizamos o [**Portal de Dados Abertos da Cidade do Recife**](https://dados.recife.pe.gov.br/dataset/pontos-de-coleta-seletiva), especificamente o dataset de Pontos de Coleta Seletiva, garantindo que as informações apresentadas sejam oficiais e atualizadas. 🏛️
 
 ---
 
