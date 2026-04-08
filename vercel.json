@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api-recife/:path*",
+      "destination": "http://dados.recife.pe.gov.br/:path*"
+    }
+  ]
+}
