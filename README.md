@@ -1,16 +1,82 @@
-# React + Vite
+# ♻️ Recicla Recife
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <img src="public/pagina-principal.png" alt="Recicla Recife - Home" width="100%">
+</p>
 
-Currently, two official plugins are available:
+> **O destino certo para um Recife mais sustentável.** 🌍
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O **Recicla Recife** é uma plataforma interativa de utilidade pública desenvolvida para facilitar o descarte correto de resíduos sólidos. Através de um mapa dinâmico alimentado por dados oficiais da Prefeitura do Recife, os usuários podem encontrar pontos de coleta seletiva de forma rápida e eficiente.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📸 Demonstração
 
-## Expanding the ESLint configuration
+O projeto conta com uma interface limpa, moderna e focado na facilidade de uso:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<p align="center">
+  <img src="public/mapa.png" alt="Mapa Interativo e Filtros" width="100%">
+  <em>Visualização do mapa interativo com suporte a filtros por bairro e tipo de material.</em>
+</p>
+
+---
+
+## 🚀 Funcionalidades
+
+- 📍 **Mapa Interativo:** Localização em tempo real de centenas de pontos de coleta utilizando Leaflet.
+- 🔍 **Filtros por Bairro:** Encontre o ecoponto mais próximo da sua residência.
+- ♻️ **Filtro por Material:** Saiba onde descartar papel, vidro, metal, eletrônicos, pneus e óleo de cozinha.
+- 📊 **Integração em Tempo Real:** Consumo da API oficial do Portal de Dados Abertos da Cidade do Recife.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+Este projeto foi construído com ferramentas modernas do ecossistema Web:
+
+- **React.js & Vite:** Para um desenvolvimento ágil e performance superior.
+- **Tailwind CSS:** Estilização premium e totalmente responsiva.
+- **React Leaflet:** Integração robusta com mapas baseados em OpenStreetMap.
+- **Lucide Icons:** Ícones modernos e minimalistas.
+
+---
+
+## 🎓 Atividade Prática Interdisciplinar de Extensão I (APIE I)
+
+Este projeto foi desenvolvido como parte integrante das atividades de extensão universitária:
+
+- **Curso:** Tecnologia da Informação
+- **Instituição:** UNINASSAU (Centro Universitário Maurício de Nassau)
+- **Orientadora:** Profa. Tereza Carla Souza Pereira
+- **Desenvolvedor:** Matheus Rodrigues Tomaz
+
+---
+
+## 📦 Instalação e Uso Local
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/matheusrtomaz/recicla-recife.git
+   ```
+
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+
+3. **Inicie o servidor de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🔗 Fonte de Dados
+
+Utilizamos o **Portal de Dados Abertos da Cidade do Recife**, especificamente o dataset de Pontos de Coleta Seletiva, garantindo que as informações apresentadas sejam oficiais e atualizadas. 🏛️
+
+---
+
+<p align="center">
+  Desenvolvido com 💚 por <a href="https://github.com/matheusrtomaz">Matheus Rodrigues Tomaz</a>
+</p>
