@@ -10,6 +10,22 @@
   .glow-green:hover {
     box-shadow: 0 0 30px rgba(116, 198, 157, 0.8);
   }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
 }
 
 html, body, #root {

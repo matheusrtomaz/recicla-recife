@@ -37,21 +37,31 @@ function App() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:w-2/3">
-            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6">
-              O destino certo<br />para um Recife<br />mais sustentável.
-            </h1>
-            <p className="text-xl lg:text-2xl font-light mb-10 text-mint/90 max-w-2xl">
-              Encontre o ponto de coleta seletiva mais próximo de você e ajude a transformar o futuro da nossa cidade.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={scrollToMap}
-                className="glow-green bg-white text-forest px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-offwhite transform hover:scale-105 transition-all"
-              >
-                <MapPin className="h-5 w-5" />
-                Encontrar Pontos
-              </button>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="lg:pr-8">
+              <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6">
+                O destino certo<br />para um Recife<br />mais sustentável.
+              </h1>
+              <p className="text-xl lg:text-2xl font-light mb-10 text-mint/90 max-w-2xl">
+                Encontre o ponto de coleta seletiva mais próximo de você e ajude a transformar o futuro da nossa cidade.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={scrollToMap}
+                  className="glow-green bg-white text-forest px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:bg-offwhite transform hover:scale-105 transition-all"
+                >
+                  <MapPin className="h-5 w-5" />
+                  Encontrar Pontos
+                </button>
+              </div>
+            </div>
+            
+            <div className="hidden lg:flex justify-center relative">
+              <img 
+                src="/mockup.png" 
+                alt="Aplicativo Recicla Recife" 
+                className="relative z-10 w-full max-w-[340px] drop-shadow-2xl animate-float transition-transform hover:scale-105 duration-500"
+              />
             </div>
           </div>
         </div>
