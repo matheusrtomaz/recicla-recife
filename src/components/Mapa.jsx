@@ -1,29 +1,70 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { Search } from 'lucide-react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { Search, Navigation, MapPin } from 'lucide-react';
 import L from 'leaflet';
 
-// Fix for default marker icons in Vite + React-Leaflet
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+function LocationMarker({ position }) {
+  const map = useMap();
+  useEffect(() => {
+    if (position) {
+      map.flyTo(position, 14, { animate: true });
+    }
+  }, [position, map]);
 
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
+  return position === null ? null : (
+    <Marker position={position} icon={RedIcon}>
+      <Popup>Você está aqui!</Popup>
+    </Marker>
+  );
+}
+
+// Custom marker icons based on color
+const GreenIcon = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  tooltipAnchor: [16, -28],
   shadowSize: [41, 41]
 });
 
-L.Marker.prototype.options.icon = DefaultIcon;
+const RedIcon = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+L.Marker.prototype.options.icon = GreenIcon;
 
 export default function Mapa() {
   const [pontos, setPontos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filtroBairro, setFiltroBairro] = useState('');
   const [filtroMaterial, setFiltroMaterial] = useState('');
+  const [userLocation, setUserLocation] = useState(null);
+  const [locating, setLocating] = useState(false);
+
+  const handleLocateMe = () => {
+    setLocating(true);
+    if (!navigator.geolocation) {
+      alert("Geolocalização não é suportada pleo seu navegador");
+      setLocating(false);
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setUserLocation([pos.coords.latitude, pos.coords.longitude]);
+        setLocating(false);
+      },
+      () => {
+        alert("Não foi possível acessar sua localização. Verifique as permissões.");
+        setLocating(false);
+      }
+    );
+  };
 
   useEffect(() => {
     const carregarPontos = async () => {
@@ -95,8 +136,16 @@ export default function Mapa() {
           <option value="lâmpada">Lâmpadas</option>
         </select>
         
-        <div className="text-sm text-gray-500 w-full text-right sm:w-auto sm:ml-auto">
-          {pontosFiltrados.length} ponto(s) encontrado(s)
+        <div className="text-sm text-gray-500 w-full sm:w-auto flex flex-col sm:flex-row items-center gap-3 sm:gap-6 sm:ml-auto">
+          <span>{pontosFiltrados.length} ponto(s) encontrado(s)</span>
+          <button 
+            onClick={handleLocateMe}
+            disabled={locating}
+            className="flex items-center gap-2 bg-mint/20 text-forest hover:bg-mint/40 px-4 py-2 rounded-full transition-colors text-sm font-bold w-full sm:w-auto justify-center"
+          >
+            <Navigation className="h-4 w-4" />
+            {locating ? 'Buscando...' : 'Perto de mim'}
+          </button>
         </div>
       </div>
 
@@ -133,16 +182,26 @@ export default function Mapa() {
                       <span className="font-semibold text-gray-800">Bairro:</span> {ponto.bairro}
                     </p>
                     {ponto.tiporesiduo && (
-                      <div className="bg-mint/10 p-2 rounded-md border border-mint/20 text-sm">
+                      <div className="bg-mint/10 p-2 rounded-md border border-mint/20 text-sm mb-3">
                         <span className="font-bold text-forest block mb-1">Materiais aceitos:</span>
                         <p className="text-gray-700">{ponto.tiporesiduo}</p>
                       </div>
                     )}
+                    <a 
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 flex items-center justify-center gap-2 w-full bg-forest text-white py-2 rounded-md hover:bg-brand-dark transition-colors font-semibold text-sm"
+                    >
+                      <MapPin className="h-4 w-4" />
+                      Como Chegar
+                    </a>
                   </div>
                 </Popup>
               </Marker>
             );
           })}
+          <LocationMarker position={userLocation} />
         </MapContainer>
       </div>
     </div>

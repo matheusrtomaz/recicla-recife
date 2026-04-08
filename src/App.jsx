@@ -1,10 +1,22 @@
 import React from 'react';
 import Mapa from './components/Mapa';
-import { Recycle, MapPin } from 'lucide-react';
+import { Recycle, MapPin, Droplets, Package, Wind, BatteryWarning } from 'lucide-react';
 
 function App() {
   const scrollToMap = () => {
     document.getElementById('mapa-section').scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  const scrollToGuia = () => {
+    document.getElementById('guia-section').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToHome = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToSobre = () => {
+    document.getElementById('sobre-section').scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -13,22 +25,45 @@ function App() {
       <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center gap-2">
+            <div 
+              onClick={scrollToHome}
+              className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
+            >
               <Recycle className="h-8 w-8 text-forest" />
               <span className="font-bold text-xl text-forest tracking-tight">Recicla Recife</span>
             </div>
-            <button 
-              onClick={scrollToMap}
-              className="text-forest font-medium hover:text-brand-dark transition-colors"
-            >
-              Ver Mapa
-            </button>
+            <div className="flex items-center gap-6">
+              <button 
+                onClick={scrollToHome}
+                className="text-forest font-medium hover:text-brand-dark transition-colors hidden sm:block"
+              >
+                Início
+              </button>
+              <button 
+                onClick={scrollToGuia}
+                className="text-forest font-medium hover:text-brand-dark transition-colors hidden sm:block"
+              >
+                Como Preparar?
+              </button>
+              <button 
+                onClick={scrollToSobre}
+                className="text-forest font-medium hover:text-brand-dark transition-colors hidden sm:block"
+              >
+                Sobre o Projeto
+              </button>
+              <button 
+                onClick={scrollToMap}
+                className="text-forest font-bold bg-mint/20 hover:bg-mint/40 px-4 py-2 rounded-full transition-colors"
+              >
+                Ver Mapa
+              </button>
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <header className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 bg-gradient-green text-white">
+      <header id="home-section" className="relative pt-24 pb-20 lg:pt-32 lg:pb-32 bg-gradient-green text-white">
         {/* Decorative background shapes */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
            <svg className="absolute w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -64,13 +99,77 @@ function App() {
           </div>
         </div>
       </header>
+      {/* Guia de Reciclagem Section */}
+      <section id="guia-section" className="py-24 bg-white relative z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-forest mb-4">Como preparar seu reciclável?</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-lg">Pequenas atitudes em casa garantem que o material não seja descartado no aterro. Siga o guia rápido antes de levar ao ponto de coleta!</p>
+          </div>
+          
+          <div className="grid grid-cols-1 select-none md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-offwhite p-8 rounded-2xl border border-gray-100 hover:border-mint/50 hover:shadow-lg transition-all group">
+              <div className="bg-mint/20 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Droplets className="h-8 w-8 text-forest" />
+              </div>
+              <h3 className="text-xl font-bold text-forest mb-3">Lave os potes</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Retire todos os restos de comida das embalagens plásticas e de metal usando água de reuso. Lixo orgânico contamina a leva!</p>
+            </div>
+
+            <div className="bg-offwhite p-8 rounded-2xl border border-gray-100 hover:border-mint/50 hover:shadow-lg transition-all group">
+              <div className="bg-mint/20 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Wind className="h-8 w-8 text-forest" />
+              </div>
+              <h3 className="text-xl font-bold text-forest mb-3">Seque os papéis</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Papelão e papel molhado (como caixa de pizza engordurada) perdem valor de reciclagem e apodrecem. Mantenha os secos.</p>
+            </div>
+
+            <div className="bg-offwhite p-8 rounded-2xl border border-gray-100 hover:border-mint/50 hover:shadow-lg transition-all group">
+              <div className="bg-mint/20 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Package className="h-8 w-8 text-forest" />
+              </div>
+              <h3 className="text-xl font-bold text-forest mb-3">Acondicione os vidros</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Enrole vidros e cacos em jornal ou coloque dentro de garrafas PET cortadas. Pense na segurança do catador!</p>
+            </div>
+
+            <div className="bg-offwhite p-8 rounded-2xl border border-gray-100 hover:border-mint/50 hover:shadow-lg transition-all group">
+              <div className="bg-mint/20 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <BatteryWarning className="h-8 w-8 text-forest" />
+              </div>
+              <h3 className="text-xl font-bold text-forest mb-3">Separe os Eletrônicos</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">Pilhas, baterias e celulares soltam metais pesados. Eles devem ir para os Ecopontos específicos ou urnas de supermercados.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sobre o Projeto Section */}
+      <section id="sobre-section" className="py-24 bg-mint/10 relative z-10 border-y border-mint/20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Recycle className="h-16 w-16 text-forest mx-auto mb-6" />
+          <h2 className="text-3xl md:text-5xl font-extrabold text-forest mb-6">Sobre o Projeto</h2>
+          <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-8">
+            O <strong>Recicla Recife</strong> nasceu como um projeto de extensão universitária dos alunos da <strong>UNINASSAU</strong> (APIE I), com a missão de conectar a população às iniciativas de sustentabilidade da cidade.
+          </p>
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-left">
+            <h3 className="text-xl font-bold text-forest mb-4">Nosso Propósito</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Sabemos que muitas pessoas querem reciclar, mas esbarram na dificuldade de encontrar informações sobre onde levar seus resíduos ou como prepará-los adequadamente. Utilizamos dados abertos fornecidos pela <strong>Prefeitura do Recife</strong> para mapear e facilitar o acesso a dezenas de pontos de coleta seletiva pela capital pernambucana.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Através da tecnologia e educação ambiental, promovemos o descarte correto de diversos materiais (plásticos, metais, eletrônicos, vidros), evitando que cheguem a aterros sanitários e ajudando a impulsionar o trabalho fundamental realizado pelas cooperativas de reciclagem da nossa região.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Map Section */}
-      <section id="mapa-section" className="py-20 bg-offwhite relative z-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-3xl shadow-xl overflow-hidden p-0 border border-gray-100">
+      <section id="mapa-section" className="py-20 bg-offwhite relative z-0">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 bg-white rounded-3xl shadow-xl overflow-hidden p-0 border border-gray-100 mb-10">
           <Mapa />
         </div>
       </section>
+
 
       {/* Footer */}
       <footer className="bg-brand-dark text-white py-16">
