@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api-recife/:path*",
-      "destination": "http://dados.recife.pe.gov.br/:path*"
+      "destination": "https://dados.recife.pe.gov.br/:path*"
     }
   ]
 }

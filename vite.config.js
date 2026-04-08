@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api-recife': {
+      '/api/data': {
         target: 'https://dados.recife.pe.gov.br',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-recife/, '')
+        rewrite: (path) => path.replace(/^\/api\/data/, '/api/action/datastore_search')
       }
     }
   }

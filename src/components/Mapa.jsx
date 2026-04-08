@@ -28,7 +28,7 @@ export default function Mapa() {
   useEffect(() => {
     const carregarPontos = async () => {
       try {
-        const response = await fetch('/api-recife/api/action/datastore_search?resource_id=bab62397-be40-436a-bc9c-fe7c7bacc0c6&limit=1000');
+        const response = await fetch('/api/data?resource_id=bab62397-be40-436a-bc9c-fe7c7bacc0c6&limit=1000');
         const data = await response.json();
         if (data.success) {
           const recordsLimpos = data.result.records.map(r => ({
