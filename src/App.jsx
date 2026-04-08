@@ -60,7 +60,7 @@ function App() {
               <img 
                 src="/mockup.png" 
                 alt="Aplicativo Recicla Recife" 
-                className="relative z-10 w-full max-w-[340px] drop-shadow-2xl animate-float transition-transform hover:scale-105 duration-500"
+                className="relative z-10 w-full max-w-[600px] drop-shadow-2xl animate-float transition-transform hover:scale-105 duration-500"
               />
             </div>
           </div>
